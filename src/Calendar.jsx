@@ -270,6 +270,10 @@ let Calendar = React.createClass({
      * ```jsx
      * let components = {
      *   event: MyEvent, // used by each view (Month, Day, Week)
+     *   month: {
+     *     event: MyMonthEvent, // used by the Month view, this will override the generic event
+     *     maxEventSlots: 4 // the maximum number of events to display per day in the month view
+     *   }
      *   agenda: {
      *   	 event: MyAgendaEvent // with the agenda view use a different component to render events
      *   }
@@ -286,9 +290,20 @@ let Calendar = React.createClass({
         event: elementType
       }),
 
-      day: PropTypes.shape({ event: elementType }),
-      week: PropTypes.shape({ event: elementType }),
-      month: PropTypes.shape({ event: elementType })
+      day: PropTypes.shape({
+        event: elementType,
+        maxEventSlots: PropTypes.number
+      }),
+
+      week: PropTypes.shape({
+        event: elementType,
+        maxEventSlots: PropTypes.number
+      }),
+
+      month: PropTypes.shape({
+        event: elementType,
+        maxEventSlots: PropTypes.number
+      })
     }),
 
     /**
