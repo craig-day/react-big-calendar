@@ -345,6 +345,8 @@ let Calendar = React.createClass({
       omit(components, names)
     )
 
+    let ToolbarToRender = components.toolbar || Toolbar
+
     return (
       <div {...elementProps}
         className={cn('rbc-calendar', className, {
@@ -353,7 +355,7 @@ let Calendar = React.createClass({
         style={style}
       >
         { toolbar &&
-          <Toolbar
+          <ToolbarToRender
             date={current}
             view={view}
             views={names}
